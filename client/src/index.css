@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Graphie';
+    src: url('./assets/fonts/Graphie-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Graphie';
+    src: url('./assets/fonts/Graphie-Bold.otf');
+    font-weight: bold;
+  }
+
+  @font-face {
+    font-family: 'Graphie';
+    src: url('./assets/fonts/Graphie-SemiBold.otf');
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: 'Graphie';
+    src: url('./assets/fonts/Graphie-Thin.otf');
+    font-weight: 300;
+  }
+
+  /* Outline focus ring on tab navigation  */
+  :focus-visible {
+    outline: 2px solid #3b82f680;
+  }
+
+  .svg-white svg {
+    stroke: white;
+  }
+
+  .date-input-lowercase * {
+    text-transform: lowercase;
+  }
+}
+button.rbc-active {
+  box-shadow: none !important;
+}
+
+.rbc-btn-group button {
+  border-color: #d1d1d1 !important;
+  color: #707070 !important;
+  border: 1px;
+}
+
+.rbc-header {
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  color: #193cb9 !important;
+  padding: 0.5rem 0.5rem !important;
+}
+
+.rbc-btn-group:last-child button:first-child {
+  margin-right: 0.5px !important;
+}
+
+.rbc-toolbar-label {
+  text-transform: uppercase !important;
+}
+
+.Select-menu-outer {
+  z-index: 100 !important;
+}
+
+.apexcharts-toolbar {
+  z-index: 1 !important;
+}
+
+.rbc-time-content {
+  display: none !important;
+}
+
+.rbc-time-header {
+  height: 100% !important;
+}
+
+.rbc-event-content {
+  flex: 1;
+  white-space: normal !important;
+  font-size: 0.75rem !important;
+}
+
+@media only print {
+  .scrollable-table {
+    width: auto !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .print-element-scroller {
+    overflow: visible !important;
+  }
+
+  @page {
+    size: 800mm 1100mm;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
