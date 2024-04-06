@@ -1,0 +1,1 @@
+export const genderOptions = [{value: "M", label: "Masculino"}, { value: "F", label: "Feminino"}]
