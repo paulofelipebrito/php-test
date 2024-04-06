@@ -1,0 +1,53 @@
+FROM php:7
+
+# Install mysqli extension
+RUN docker-php-ext-install mysqli
+
+# Set debconf to noninteractive mode
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
+# Update package lists and install required packages
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    php5-mysql
+
+# Copy Apache virtual host configuration
+COPY ./conf/apache /etc/apache2/sites-enabled/
+
+# Copy PHP configuration
+COPY ./conf/php /etc/php/5.5/
+
+# Expose ports
+EXPOSE 80
+EXPOSE 443
+
+
+# FROM php:8.1.0-apache
+# WORKDIR /var/www/html
+
+# # Mod Rewrite
+# RUN a2enmod rewrite
+
+# # Linux Library
+# RUN apt-get update -y && apt-get install -y \
+#     libicu-dev \
+#     libmariadb-dev \
+#     unzip zip \
+#     zlib1g-dev \
+#     libpng-dev \
+#     libjpeg-dev \
+#     libfreetype6-dev \
+#     libjpeg62-turbo-dev \
+#     libpng-dev 
+
+# # Composer
+# COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# # PHP Extension
+# RUN docker-php-ext-install gettext intl pdo_mysql gd
+# RUN docker-php-ext-install pdo_mysql
+# RUN docker-php-ext-install mysqli
+
+
+# RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
+#     && docker-php-ext-install -j$(nproc) gd
