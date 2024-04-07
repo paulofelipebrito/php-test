@@ -25,7 +25,7 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    yarn 
    ```
-3. Create .env following .env.example and add url to server (ex: VITE_API_URL=http://127.0.0.1:8000/api)
+3. Create .env following .env.example and add url to server (ex: VITE_API_URL=http://localhost:8000/api)
 
 4. Start the app with yarn
    ```sh
