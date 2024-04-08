@@ -92,17 +92,14 @@ class ClientController extends Controller
     public function update(UpdateClientRequest $request, string $client)
     {
         try {
-            // Get the client instance
             $client = Client::find($client);
 
-            // Check if the client exists
             if (!$client) {
                 return response()->json([
                     'message' => 'Client not found.'
                 ], 404);
             }
 
-            // Define validation rules array
             $rules = [
                 'name' => 'sometimes|required|string',
                 'cpf' => 'sometimes|required|string|size:11|unique:clients,cpf,' . $client->id,
@@ -113,10 +110,8 @@ class ClientController extends Controller
                 'address' => 'sometimes|required|string',
             ];
 
-            // Validate only the fields present in the request
             $validatedData = $request->validate($rules);
 
-            // Update the client with validated data
             $client->update($validatedData);
 
             return response()->json([
